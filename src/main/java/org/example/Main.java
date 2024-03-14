@@ -1,5 +1,8 @@
-package org.example;public class Main {
+package org.example;
+
+public class Main {
     public static void main(String[] args) {
+        // ed branch
         System.out.println("Hello world!");
     }
 }
