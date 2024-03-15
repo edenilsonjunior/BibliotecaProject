@@ -1,5 +1,7 @@
 package view.sistema;
 
+import dto.FuncionarioDTO;
+
 import java.util.Scanner;
 
 public class SistemaView {
@@ -29,6 +31,10 @@ public class SistemaView {
             default -> MenuOption.SAIR;
         };
 
+    }
+
+    public static FuncionarioDTO teste(){
+        return new FuncionarioDTO("henrique", "henrique@gmail.com", "1234324");
     }
 
 }
