@@ -1,8 +1,7 @@
-package model.dao;
+package model.dao.livro;
 
 import model.entity.livro.Livro;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

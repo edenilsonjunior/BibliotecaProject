@@ -1,4 +1,5 @@
-package model.dao;
+package model.dao.emprestimo;
+
 
 import model.entity.livro.Emprestimo;
 

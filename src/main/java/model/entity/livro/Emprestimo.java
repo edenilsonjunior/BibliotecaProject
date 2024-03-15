@@ -3,6 +3,8 @@ package model.entity.livro;
 import java.time.LocalDate;
 import java.time.Period;
 
+import model.entity.user.Usuario;
+
 public class Emprestimo {
 
     private Usuario usuario;

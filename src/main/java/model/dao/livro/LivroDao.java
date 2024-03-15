@@ -1,4 +1,5 @@
-package model.dao;
+package model.dao.livro;
+
 
 import model.entity.livro.Livro;
 
