@@ -30,11 +30,13 @@ public class SistemaView {
             case 7-> MenuOption.LISTAR_EMPRESTIMOS_ATRASADOS;
             default -> MenuOption.SAIR;
         };
+    }
 
+    public static void mensagemDeErro(String str) {
+        System.out.println(str);
     }
 
     public static UsuarioDTO teste(){
         return new UsuarioDTO("henrique", "henrique@gmail.com", "1234324", "Funcionario");
     }
-
 }

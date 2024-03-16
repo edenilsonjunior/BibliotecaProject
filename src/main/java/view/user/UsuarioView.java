@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class UsuarioView implements IUsuarioView{
 
     private static final Scanner input = new Scanner(System.in);
+
     @Override
     public UsuarioDTO cadastrarUsuario() {
         System.out.println("-----CADASTRO DE USUARIO-----");
