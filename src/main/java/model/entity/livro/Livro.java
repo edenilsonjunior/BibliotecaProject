@@ -1,12 +1,12 @@
 package model.entity.livro;
 
-public class Livro{
+public class Livro {
+
     private String titulo;
     private String autor;
     private String edicao;
     private boolean disponivel;
     private int qntEmprestimo;
-
 
     public Livro(String titulo, String autor, String edicao, boolean disponivel) {
         this.titulo = titulo;

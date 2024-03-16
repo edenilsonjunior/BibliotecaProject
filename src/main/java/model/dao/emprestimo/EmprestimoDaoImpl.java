@@ -3,10 +3,11 @@ package model.dao.emprestimo;
 
 import model.entity.livro.Emprestimo;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
 
-public class EmprestimoDaoImpl implements EmprestimoDao{
+public class EmprestimoDaoImpl implements EmprestimoDao {
 
     private static EmprestimoDaoImpl instance = null;
     private Set<Emprestimo> conjunto;

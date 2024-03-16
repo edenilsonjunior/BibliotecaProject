@@ -2,6 +2,7 @@ package model.entity.livro;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 import model.entity.user.Usuario;
 
@@ -60,4 +61,16 @@ public class Emprestimo {
         return dias < 0;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Emprestimo that = (Emprestimo) o;
+        return Objects.equals(usuario, that.usuario) && Objects.equals(livro, that.livro) && Objects.equals(dataEmprestimo, that.dataEmprestimo) && Objects.equals(dataVencimento, that.dataVencimento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(usuario, livro, dataEmprestimo, dataVencimento);
+    }
 }

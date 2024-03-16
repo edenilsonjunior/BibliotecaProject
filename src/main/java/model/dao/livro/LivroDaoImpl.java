@@ -3,7 +3,7 @@ package model.dao.livro;
 import model.entity.livro.Livro;
 
 import java.util.HashSet;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class LivroDaoImpl implements LivroDao{
@@ -23,6 +23,11 @@ public class LivroDaoImpl implements LivroDao{
     }
 
     @Override
+    public Set<Livro> getAll() {
+        return conjunto;
+    }
+
+    @Override
     public boolean inserirLivro(Livro livro) {
         return conjunto.add(livro);
     }
@@ -30,10 +35,5 @@ public class LivroDaoImpl implements LivroDao{
     @Override
     public boolean removerLivro(Livro livro) {
         return conjunto.remove(livro);
-    }
-
-    @Override
-    public List<Livro> getLivros() {
-        return null;
     }
 }

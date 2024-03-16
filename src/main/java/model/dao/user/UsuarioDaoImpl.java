@@ -3,9 +3,11 @@ package model.dao.user;
 import model.entity.user.Usuario;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class UsuarioDaoImpl implements UsuarioDao {
+
     private Set<Usuario> usuarios;
     private static UsuarioDao instance = null;
 
@@ -26,18 +28,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    public boolean inserir(Usuario usuario) {
+    public boolean inserirUsuario(Usuario usuario) {
         return usuarios.add(usuario);
     }
 
     @Override
-    public boolean remover(Usuario usuario) {
-        for (Usuario u : usuarios) {
-            if (u.equals(usuario)) {
-                usuarios.remove(u);
-                return true;
-            }
-        }
-        return false;
+    public boolean removerUsuario(Usuario usuario) {
+        return usuarios.remove(usuario);
     }
 }
