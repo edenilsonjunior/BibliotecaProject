@@ -1,6 +1,5 @@
 package dto;
 
-import model.entity.user.Funcionario;
 import model.entity.user.Usuario;
 
 public class FuncionarioDTO implements IDTO<Usuario>{

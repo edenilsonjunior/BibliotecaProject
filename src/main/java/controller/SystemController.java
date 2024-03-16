@@ -1,18 +1,11 @@
 package controller;
 
-import dto.FuncionarioDTO;
 import model.dao.emprestimo.EmprestimoDao;
 import model.dao.emprestimo.EmprestimoDaoImpl;
 import model.dao.livro.LivroDao;
 import model.dao.livro.LivroDaoImpl;
 import model.dao.user.UsuarioDao;
 import model.dao.user.UsuarioDaoImpl;
-import model.entity.user.Funcionario;
-import model.entity.user.Usuario;
-import view.sistema.MenuOption;
-import view.sistema.SistemaView;
-
-import java.awt.*;
 
 public class SystemController {
 
