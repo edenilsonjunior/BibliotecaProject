@@ -8,12 +8,12 @@ public class Livro{
     private int qntEmprestimo;
 
 
-    public Livro(String titulo, String autor, String edicao, boolean disponivel, int qntEmprestimo) {
+    public Livro(String titulo, String autor, String edicao, boolean disponivel) {
         this.titulo = titulo;
         this.autor = autor;
         this.edicao = edicao;
         this.disponivel = disponivel;
-        this.qntEmprestimo = qntEmprestimo;
+        this.qntEmprestimo = 0;
     }
 
     public String getTitulo() {
@@ -54,6 +54,10 @@ public class Livro{
 
     public void setQntEmprestimo(int qntEmprestimo) {
         this.qntEmprestimo = qntEmprestimo;
+    }
+
+    public void addQntEmprestado(){
+        this.qntEmprestimo = this.qntEmprestimo +1;
     }
 
     @Override

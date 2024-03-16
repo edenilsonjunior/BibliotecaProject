@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4997f14-f76a-4f8a-9e3c-e75a9cb9ae5f" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/java/dto/LivroDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/view/livro/ILivroView.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/view/user/IUsuarioView.java" afterDir="false" />
@@ -14,6 +15,19 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/dto/FuncionarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/FuncionarioDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/user/Aluno.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/user/Funcionario.java" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/FuncionarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UsuarioDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/livro/LivroDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/livro/LivroDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/livro/LivroDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/livro/LivroDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/livro/Livro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/livro/Livro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/user/Aluno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/user/Funcionario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/user/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/user/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/sistema/SistemaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/sistema/SistemaView.java" afterDir="false" />
+>>>>>>> main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
