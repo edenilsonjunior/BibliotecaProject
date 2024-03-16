@@ -1,5 +1,6 @@
-package controller;
+package controller.sistema;
 
+import controller.user.UsuarioController;
 import dto.UsuarioDTO;
 import model.dao.emprestimo.EmprestimoDao;
 import model.dao.emprestimo.EmprestimoDaoImpl;
@@ -25,7 +26,6 @@ public class SystemController {
         emprestimos = EmprestimoDaoImpl.getInstance();
     }
 
-
     public void run(){
 
        MenuOption escolha;
@@ -33,11 +33,13 @@ public class SystemController {
        do {
            escolha = SistemaView.menu();
 
-
            switch (escolha){
                case CADASTRAR_LIVRO:
                    break;
                case CADASTRAR_USUARIO:
+                   UsuarioController usuarioController = new UsuarioController();
+                   if (!usuarioController.cadastrarUsuario())
+                       SistemaView.mensagemDeErro("Usuario Invalido");
                    break;
                case LISTAR_LIVROS:
                    break;
@@ -52,8 +54,6 @@ public class SystemController {
                     break;
            }
 
-
        } while(escolha != MenuOption.SAIR);
-
     }
 }
