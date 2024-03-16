@@ -2,7 +2,8 @@ package dto;
 
 import model.entity.livro.Livro;
 
-public class LivroDTO implements IDTO<Livro>{
+public class LivroDTO implements IDTO<Livro> {
+
     private String titulo;
     private String autor;
     private String edicao;
