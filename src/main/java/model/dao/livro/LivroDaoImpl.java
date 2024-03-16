@@ -23,13 +23,13 @@ public class LivroDaoImpl implements LivroDao{
     }
 
     @Override
-    public boolean inserirLivro() {
-        return false;
+    public boolean inserirLivro(Livro livro) {
+        return conjunto.add(livro);
     }
 
     @Override
-    public boolean removerLivro() {
-        return false;
+    public boolean removerLivro(Livro livro) {
+        return conjunto.remove(livro);
     }
 
     @Override

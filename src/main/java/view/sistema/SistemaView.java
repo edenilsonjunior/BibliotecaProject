@@ -1,6 +1,6 @@
 package view.sistema;
 
-import dto.FuncionarioDTO;
+import dto.UsuarioDTO;
 
 import java.util.Scanner;
 
@@ -33,8 +33,8 @@ public class SistemaView {
 
     }
 
-    public static FuncionarioDTO teste(){
-        return new FuncionarioDTO("henrique", "henrique@gmail.com", "1234324");
+    public static UsuarioDTO teste(){
+        return new UsuarioDTO("henrique", "henrique@gmail.com", "1234324", "Funcionario");
     }
 
 }

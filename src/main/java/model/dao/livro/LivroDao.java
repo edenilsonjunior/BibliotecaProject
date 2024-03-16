@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface LivroDao {
 
-    boolean inserirLivro();
-    boolean removerLivro();
+    boolean inserirLivro(Livro livro);
+    boolean removerLivro(Livro livro);
     List<Livro> getLivros();
 }
