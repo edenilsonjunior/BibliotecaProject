@@ -12,7 +12,7 @@ public class EmprestimoDaoImpl implements EmprestimoDao {
     private static EmprestimoDaoImpl instance = null;
     private Set<Emprestimo> conjunto;
 
-    public EmprestimoDaoImpl() {
+    private EmprestimoDaoImpl() {
         this.conjunto = new HashSet<>();
     }
 

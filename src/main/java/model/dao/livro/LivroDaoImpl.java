@@ -11,7 +11,7 @@ public class LivroDaoImpl implements LivroDao{
     private static LivroDaoImpl instance = null;
     private Set<Livro> conjunto;
 
-    public LivroDaoImpl(){
+    private LivroDaoImpl(){
         this.conjunto = new HashSet<>();
     }
 

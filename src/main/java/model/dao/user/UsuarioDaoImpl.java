@@ -11,7 +11,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
     private Set<Usuario> usuarios;
     private static UsuarioDao instance = null;
 
-    public UsuarioDaoImpl() {
+    private UsuarioDaoImpl() {
         this.usuarios = new HashSet<>();
     }
 
