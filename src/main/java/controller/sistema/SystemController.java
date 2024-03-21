@@ -19,11 +19,13 @@ public class SystemController {
     private UsuarioDao usuarios;
     private EmprestimoDao emprestimos;
     private LivroDao livros;
+    private UsuarioController usuarioController;
 
     public SystemController() {
         usuarios = UsuarioDaoImpl.getInstance();
         livros = LivroDaoImpl.getInstance();
         emprestimos = EmprestimoDaoImpl.getInstance();
+        usuarioController = new UsuarioController();
     }
 
     public void run(){
@@ -37,7 +39,6 @@ public class SystemController {
                case CADASTRAR_LIVRO:
                    break;
                case CADASTRAR_USUARIO:
-                   UsuarioController usuarioController = new UsuarioController();
                    if (!usuarioController.cadastrarUsuario())
                        SistemaView.mensagemDeErro("Usuario Invalido");
                    break;
@@ -50,6 +51,8 @@ public class SystemController {
                case LISTAR_LIVROS_EMPRESTADOS:
                    break;
                case LISTAR_USUARIO_COM_PENALIDADE:
+                    if (!usuarioController.listarUsuariosComPenalidade())
+                       SistemaView.mensagemDeErro("Lista vazia");
                default:
                     break;
            }

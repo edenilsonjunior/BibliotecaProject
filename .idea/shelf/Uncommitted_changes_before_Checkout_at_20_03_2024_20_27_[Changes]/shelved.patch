@@ -1,0 +1,245 @@
+Index: src/main/java/view/user/IUsuarioView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view.user;\n\nimport dto.UsuarioDTO;\n\npublic interface IUsuarioView {\n    UsuarioDTO cadastrarUsuario();\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/view/user/IUsuarioView.java b/src/main/java/view/user/IUsuarioView.java
+--- a/src/main/java/view/user/IUsuarioView.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/view/user/IUsuarioView.java	(date 1710976371045)
+@@ -1,7 +1,10 @@
+ package view.user;
+ 
++import java.util.List;
++
+ import dto.UsuarioDTO;
+ 
+ public interface IUsuarioView {
+     UsuarioDTO cadastrarUsuario();
++    void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade);
+ }
+Index: src/main/java/view/user/UsuarioView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view.user;\n\nimport dto.UsuarioDTO;\n\nimport java.util.Scanner;\n\npublic class UsuarioView implements IUsuarioView{\n\n    private static final Scanner input = new Scanner(System.in);\n\n    @Override\n    public UsuarioDTO cadastrarUsuario() {\n        System.out.println(\"-----CADASTRO DE USUARIO-----\");\n        System.out.println(\"----------------------------\");\n        System.out.print(\"Informe seu nome: \");\n        var nome = input.nextLine();\n        System.out.println();\n        System.out.print(\"Informe seu email: \");\n        var email = input.nextLine();\n        System.out.println();\n        System.out.print(\"Informe seu telefone: \");\n        var telefone = input.nextLine();\n        System.out.println();\n        System.out.print(\"Informe seu cargo: \");\n        var cargo = input.nextLine();\n        System.out.println();\n        return new UsuarioDTO(nome,email,telefone,cargo);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/view/user/UsuarioView.java b/src/main/java/view/user/UsuarioView.java
+--- a/src/main/java/view/user/UsuarioView.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/view/user/UsuarioView.java	(date 1710976970559)
+@@ -1,7 +1,9 @@
+ package view.user;
+ 
+ import dto.UsuarioDTO;
++import model.entity.user.Usuario;
+ 
++import java.util.List;
+ import java.util.Scanner;
+ 
+ public class UsuarioView implements IUsuarioView{
+@@ -10,8 +12,9 @@
+ 
+     @Override
+     public UsuarioDTO cadastrarUsuario() {
++
+         System.out.println("-----CADASTRO DE USUARIO-----");
+-        System.out.println("----------------------------");
++        System.out.println("-----------------------------");
+         System.out.print("Informe seu nome: ");
+         var nome = input.nextLine();
+         System.out.println();
+@@ -24,6 +27,18 @@
+         System.out.print("Informe seu cargo: ");
+         var cargo = input.nextLine();
+         System.out.println();
++
+         return new UsuarioDTO(nome,email,telefone,cargo);
+     }
++
++    @Override
++    public void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade); {
++
++        System.out.println("-----USUARIO(S) COM PENALIDADE-----");
++        System.out.println("-----------------------------------");
++
++        for (Usuario u : usuariosComPenalidade) {
++            System.out.println(u.getNome());
++        }
++    }
+ }
+Index: src/main/java/controller/sistema/SystemController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller.sistema;\n\nimport controller.user.UsuarioController;\nimport dto.UsuarioDTO;\nimport model.dao.emprestimo.EmprestimoDao;\nimport model.dao.emprestimo.EmprestimoDaoImpl;\nimport model.dao.livro.LivroDao;\nimport model.dao.livro.LivroDaoImpl;\nimport model.dao.user.UsuarioDao;\nimport model.dao.user.UsuarioDaoImpl;\nimport model.entity.user.Usuario;\nimport view.sistema.MenuOption;\nimport view.sistema.SistemaView;\n\nimport java.awt.*;\n\npublic class SystemController {\n\n    private UsuarioDao usuarios;\n    private EmprestimoDao emprestimos;\n    private LivroDao livros;\n\n    public SystemController() {\n        usuarios = UsuarioDaoImpl.getInstance();\n        livros = LivroDaoImpl.getInstance();\n        emprestimos = EmprestimoDaoImpl.getInstance();\n    }\n\n    public void run(){\n\n       MenuOption escolha;\n\n       do {\n           escolha = SistemaView.menu();\n\n           switch (escolha){\n               case CADASTRAR_LIVRO:\n                   break;\n               case CADASTRAR_USUARIO:\n                   UsuarioController usuarioController = new UsuarioController();\n                   if (!usuarioController.cadastrarUsuario())\n                       SistemaView.mensagemDeErro(\"Usuario Invalido\");\n                   break;\n               case LISTAR_LIVROS:\n                   break;\n               case LISTAR_USUARIO_COM_EMPRESTIMO:\n                   break;\n               case LISTAR_EMPRESTIMOS_ATRASADOS:\n                   break;\n               case LISTAR_LIVROS_EMPRESTADOS:\n                   break;\n               case LISTAR_USUARIO_COM_PENALIDADE:\n               default:\n                    break;\n           }\n\n       } while(escolha != MenuOption.SAIR);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/sistema/SystemController.java b/src/main/java/controller/sistema/SystemController.java
+--- a/src/main/java/controller/sistema/SystemController.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/controller/sistema/SystemController.java	(date 1710977055667)
+@@ -19,11 +19,13 @@
+     private UsuarioDao usuarios;
+     private EmprestimoDao emprestimos;
+     private LivroDao livros;
++    private UsuarioController usuarioController;
+ 
+     public SystemController() {
+         usuarios = UsuarioDaoImpl.getInstance();
+         livros = LivroDaoImpl.getInstance();
+         emprestimos = EmprestimoDaoImpl.getInstance();
++        usuarioController = new UsuarioController();
+     }
+ 
+     public void run(){
+@@ -37,7 +39,6 @@
+                case CADASTRAR_LIVRO:
+                    break;
+                case CADASTRAR_USUARIO:
+-                   UsuarioController usuarioController = new UsuarioController();
+                    if (!usuarioController.cadastrarUsuario())
+                        SistemaView.mensagemDeErro("Usuario Invalido");
+                    break;
+@@ -50,6 +51,8 @@
+                case LISTAR_LIVROS_EMPRESTADOS:
+                    break;
+                case LISTAR_USUARIO_COM_PENALIDADE:
++                    if (!usuarioController.listarUsuariosComPenalidade())
++                       SistemaView.mensagemDeErro("Lista vazia");
+                default:
+                     break;
+            }
+Index: src/main/java/controller/user/UsuarioController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller.user;\n\nimport model.dao.user.UsuarioDao;\nimport model.dao.user.UsuarioDaoImpl;\nimport model.entity.user.Usuario;\nimport view.user.IUsuarioView;\nimport view.user.UsuarioView;\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic class UsuarioController {\n\n    private IUsuarioView usuarioView;\n    private UsuarioDao usuarioDao;\n\n    public UsuarioController() {\n        this.usuarioView = new UsuarioView();\n        this.usuarioDao = UsuarioDaoImpl.getInstance();\n    }\n\n    public boolean cadastrarUsuario() {\n        Usuario usuario = usuarioView.cadastrarUsuario().toEntity();\n        return usuarioDao.inserirUsuario(usuario);\n    }\n\n    public List<String> listarPenalidades() {\n\n        List<String> penalidades = new ArrayList<>(usuarioDao.getAll().size());\n\n        StringBuilder sb = new StringBuilder();\n\n        int i = 0;\n\n        for (var user : usuarioDao.getAll()) {\n\n            for (var emprestimo : user.getEmprestimos()) {\n                if (emprestimo.isAtrasado()) {\n                    String str = user.getNome();\n                    penalidades.add(str);\n                    break;\n                }\n            }\n        }\n\n        if (penalidades.isEmpty()) return null;\n\n        return penalidades;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/user/UsuarioController.java b/src/main/java/controller/user/UsuarioController.java
+--- a/src/main/java/controller/user/UsuarioController.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/controller/user/UsuarioController.java	(date 1710976974661)
+@@ -6,6 +6,9 @@
+ import view.user.IUsuarioView;
+ import view.user.UsuarioView;
+ import java.util.List;
++
++import dto.UsuarioDTO;
++
+ import java.util.ArrayList;
+ 
+ public class UsuarioController {
+@@ -23,27 +26,16 @@
+         return usuarioDao.inserirUsuario(usuario);
+     }
+ 
+-    public List<String> listarPenalidades() {
+-
+-        List<String> penalidades = new ArrayList<>(usuarioDao.getAll().size());
++    public boolean listarUsuariosComPenalidade() {
+ 
+-        StringBuilder sb = new StringBuilder();
+-
+-        int i = 0;
+-
+-        for (var user : usuarioDao.getAll()) {
+-
+-            for (var emprestimo : user.getEmprestimos()) {
+-                if (emprestimo.isAtrasado()) {
+-                    String str = user.getNome();
+-                    penalidades.add(str);
+-                    break;
+-                }
+-            }
++        List<UsuarioDTO> usuariosComPenalidade = new ArrayList<>();
++        
++        for(Usuario u : usuarioDao.listarUsuarioComPenalidade()){
++            usuariosComPenalidade.add(u);
+         }
+ 
+-        if (penalidades.isEmpty()) return null;
++        usuarioView.listarUsuariosComPenalidade(usuariosComPenalidade);
+ 
+-        return penalidades;
++        return !usuariosComPenalidade.isEmpty();
+     }
+ }
+Index: src/main/java/model/dao/user/UsuarioDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model.dao.user;\n\nimport model.entity.user.Usuario;\n\nimport java.util.Set;\n\npublic interface UsuarioDao {\n\n    Set<Usuario> getAll();\n    boolean inserirUsuario(Usuario usuario);\n    boolean removerUsuario(Usuario usuario);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/model/dao/user/UsuarioDao.java b/src/main/java/model/dao/user/UsuarioDao.java
+--- a/src/main/java/model/dao/user/UsuarioDao.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/model/dao/user/UsuarioDao.java	(date 1710974220293)
+@@ -9,4 +9,5 @@
+     Set<Usuario> getAll();
+     boolean inserirUsuario(Usuario usuario);
+     boolean removerUsuario(Usuario usuario);
++    Set<Usuario> listarUsuarioComPenalidade();
+ }
+Index: src/main/java/model/dao/user/UsuarioDaoImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model.dao.user;\n\nimport model.entity.user.Usuario;\n\nimport java.util.HashSet;\nimport java.util.Objects;\nimport java.util.Set;\n\npublic class UsuarioDaoImpl implements UsuarioDao {\n\n    private Set<Usuario> usuarios;\n    private static UsuarioDao instance = null;\n\n    private UsuarioDaoImpl() {\n        this.usuarios = new HashSet<>();\n    }\n\n    public static UsuarioDao getInstance() {\n        if (instance == null) {\n            instance = new UsuarioDaoImpl();\n        }\n        return instance;\n    }\n\n    @Override\n    public Set<Usuario> getAll() {\n        return usuarios;\n    }\n\n    @Override\n    public boolean inserirUsuario(Usuario usuario) {\n        return usuarios.add(usuario);\n    }\n\n    @Override\n    public boolean removerUsuario(Usuario usuario) {\n        return usuarios.remove(usuario);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/model/dao/user/UsuarioDaoImpl.java b/src/main/java/model/dao/user/UsuarioDaoImpl.java
+--- a/src/main/java/model/dao/user/UsuarioDaoImpl.java	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/src/main/java/model/dao/user/UsuarioDaoImpl.java	(date 1710976973061)
+@@ -29,11 +29,28 @@
+ 
+     @Override
+     public boolean inserirUsuario(Usuario usuario) {
+-        return usuarios.add(usuario);
++        return usuarios.add(usuario)
+     }
+ 
+     @Override
+     public boolean removerUsuario(Usuario usuario) {
+         return usuarios.remove(usuario);
+     }
++
++    @Override
++    Set<Usuario> listarUsuariosComPenalidade() {
++
++        Set<Usuario> usuariosComPenalidade =  new HashSet<>();
++
++        for (Usuario u : usuarios) {
++            for (var emprestimo : u.getEmprestismos()) {
++                if (emprestimo.isAtrasado()) {
++                    usuariosComPenalidade.add(u);
++                    break;
++                }
++            }
++        }
++
++        return usuariosComPenalidade;
++    }
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n    <option name=\"workspaceImportForciblyTurnedOn\" value=\"true\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"18\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision a1ef491de0152209b0ed898f47dfb1f0bd6e49b0)
++++ b/.idea/misc.xml	(date 1710974556121)
+@@ -7,9 +7,8 @@
+         <option value="$PROJECT_DIR$/pom.xml" />
+       </list>
+     </option>
+-    <option name="workspaceImportForciblyTurnedOn" value="true" />
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
