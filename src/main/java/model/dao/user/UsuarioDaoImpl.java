@@ -2,17 +2,18 @@ package model.dao.user;
 
 import model.entity.user.Usuario;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Set;
 
 public class UsuarioDaoImpl implements UsuarioDao {
 
-    private Set<Usuario> usuarios;
+    private Map<String, Usuario> usuarios;
     private static UsuarioDao instance = null;
 
     private UsuarioDaoImpl() {
-        this.usuarios = new HashSet<>();
+        this.usuarios = new HashMap<>();
     }
 
     public static UsuarioDao getInstance() {
@@ -23,40 +24,69 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    public Set<Usuario> getAll() {
+    public Map<String, Usuario> getAll() {
         return usuarios;
     }
 
     @Override
-    public boolean inserirUsuario(Usuario usuario) {
-        return usuarios.add(usuario);
+    public Usuario getByName(String nome){
+        return usuarios.get(nome);
     }
 
     @Override
-    public boolean removerUsuario(Usuario usuario) {
-        return usuarios.remove(usuario);
+    public boolean inserirUsuario(Usuario usuario) {
+        usuarios.put(usuario.getNome(), usuario);
+
+        if (usuarios.containsKey(usuario.getNome())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean removerUsuario(String usuario) {
+        usuarios.remove(usuario);
+
+        if (usuarios.containsKey(usuario)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
     public Set<Usuario> listarUsuariosComPenalidade() {
 
-        Set<Usuario> usuariosComPenalidade =  new HashSet<>();
+        Set<Usuario> usuariosComPenalidade = new HashSet<>();
 
-        // teste
-        Usuario uTeste = new Usuario("edcu","edcu@gmail.com", "190", "dev low code");
-
-        for (Usuario u : usuarios) {
-            for (var emprestimo : u.getEmprestimos()) {
-                if (emprestimo.isAtrasado()) {
+        for (Usuario u : usuarios.values()) {
+            for (int i = 0; i < u.getEmprestimos().size(); i++) {
+                if (u.getEmprestimos().get(i).isAtrasado()) {
                     usuariosComPenalidade.add(u);
                     break;
                 }
             }
         }
 
-        // teste
-        usuariosComPenalidade.add(uTeste);
-
+        if (usuariosComPenalidade.isEmpty()) return null;
+        
         return usuariosComPenalidade;
+    }
+
+    public Set<Usuario> listarUsuariosComLivrosEmprestados(){
+
+        Set<Usuario> usuariosComLivrosEmprestados = new HashSet<>();
+
+        for (Usuario u : usuarios.values()) {
+            if (u.getEmprestimos().size() > 0) {
+                usuariosComLivrosEmprestados.add(u);
+            }
+        }
+
+        if (usuariosComLivrosEmprestados.isEmpty()) return null;
+
+        return usuariosComLivrosEmprestados;
+
     }
 }

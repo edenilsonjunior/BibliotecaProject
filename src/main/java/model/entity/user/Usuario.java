@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 
 import lombok.Data;
-import model.dao.user.UsuarioDaoImpl;
 import model.entity.livro.Emprestimo;
 
 @Data

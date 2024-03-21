@@ -1,22 +1,50 @@
 package controller.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dto.UsuarioDTO;
 import model.dao.user.UsuarioDao;
 import model.dao.user.UsuarioDaoImpl;
 import model.entity.user.Usuario;
+import view.sistema.SistemaView;
 import view.user.IUsuarioView;
 import view.user.UsuarioView;
-import java.util.List;
-import java.util.ArrayList;
 
 public class UsuarioController {
 
     private IUsuarioView usuarioView;
     private UsuarioDao usuarioDao;
+    private String[] opcoes;
 
     public UsuarioController() {
         this.usuarioView = new UsuarioView();
         this.usuarioDao = UsuarioDaoImpl.getInstance();
+
+        opcoes = new String[]{
+            "Cadastrar usuario",
+            "Listar usuarios com penalidade",
+            "Voltar"
+        };
+    }
+
+    public void run() {
+
+        String escolha;
+
+        do {
+            escolha = SistemaView.menu(opcoes);
+
+            switch (escolha) {
+                case "Cadastrar usuario":
+                    cadastrarUsuario();
+                    break;
+
+                case "Listar usuarios com penalidade":
+                    listarUsuariosComPenalidade();
+                    break;
+            }
+        } while (!escolha.equals("Voltar"));
     }
 
     public boolean cadastrarUsuario() {
@@ -36,7 +64,7 @@ public class UsuarioController {
             return false;
         }
         else {
-            usuarioView.listarUsuariosComPenalidade(usuariosDTO);
+            usuarioView.listarPenalidades(usuariosDTO);
             return true;
         }
     }

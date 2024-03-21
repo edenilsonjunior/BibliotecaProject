@@ -1,7 +1,6 @@
 package view.user;
 
 import dto.UsuarioDTO;
-import model.entity.user.Usuario;
 
 import java.util.List;
 import java.util.Scanner;
@@ -32,7 +31,7 @@ public class UsuarioView implements IUsuarioView{
     }
 
     @Override
-    public void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade) {
+    public void listarPenalidades(List<UsuarioDTO> usuariosComPenalidade) {
 
         System.out.println("-----USUARIO(S) COM PENALIDADE-----");
         System.out.println("-----------------------------------");

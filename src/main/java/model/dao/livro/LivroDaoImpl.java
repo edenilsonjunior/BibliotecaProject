@@ -2,17 +2,16 @@ package model.dao.livro;
 
 import model.entity.livro.Livro;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LivroDaoImpl implements LivroDao{
 
     private static LivroDaoImpl instance = null;
-    private Set<Livro> conjunto;
+    private Map<String, Livro> livros;
 
     private LivroDaoImpl(){
-        this.conjunto = new HashSet<>();
+        this.livros = new HashMap<>();
     }
 
     public static LivroDaoImpl getInstance(){
@@ -23,17 +22,35 @@ public class LivroDaoImpl implements LivroDao{
     }
 
     @Override
-    public Set<Livro> getAll() {
-        return conjunto;
+    public Map<String, Livro> getAll() {
+        return livros;
+    }
+
+    @Override
+    public Livro getByTitulo(String titulo){
+        return livros.get(titulo);
     }
 
     @Override
     public boolean inserirLivro(Livro livro) {
-        return conjunto.add(livro);
+        
+        livros.put(livro.getTitulo(), livro);
+
+        if (livros.containsKey(livro.getTitulo())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean removerLivro(Livro livro) {
-        return conjunto.remove(livro);
+        livros.remove(livro.getTitulo());
+
+        if (livros.containsKey(livro.getTitulo())) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

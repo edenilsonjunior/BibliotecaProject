@@ -6,5 +6,5 @@ import dto.UsuarioDTO;
 
 public interface IUsuarioView {
     UsuarioDTO cadastrarUsuario();
-    void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade);
+    void listarPenalidades(List<UsuarioDTO> usuariosComPenalidade);
 }

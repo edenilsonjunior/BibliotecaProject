@@ -4,6 +4,7 @@ import dto.LivroDTO;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class LivroView implements ILivroView{
 
@@ -25,7 +26,7 @@ public class LivroView implements ILivroView{
     }
 
     @Override
-    public void listarLivros(List<LivroDTO> livros) {
+    public void listarLivros(Set<LivroDTO> livros) {
         livros
                 .forEach(livro ->{
                     System.out.println("----------------------------");
@@ -37,15 +38,14 @@ public class LivroView implements ILivroView{
     }
 
     @Override
-    public void listarLivrosEmprestados(List<LivroDTO> livros) {
-        livros.stream()
-                .filter(livro -> !livro.isDisponivel())
-                .forEach(livro -> {
-                    System.out.println("----------------------------");
-                    System.out.println("Titulo: " + livro.getTitulo());
-                    System.out.println("Autor: " + livro.getAutor());
-                    System.out.println("Edicao: " + livro.getEdicao());
-                    System.out.println("----------------------------");
-                });
+    public void listarQntLivrosEmprestados(List<String> livrosEmprestados) {
+    
+        int total = 0;
+        for (String livro : livrosEmprestados) {
+            System.out.println("----------------------------");
+            System.out.println(total + ": " + livro);
+            System.out.println("----------------------------");
+            total++;
+        }
     }
 }

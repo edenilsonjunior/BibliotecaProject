@@ -3,7 +3,6 @@ package model.dao.emprestimo;
 
 import model.entity.livro.Emprestimo;
 
-import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -22,6 +21,16 @@ public class EmprestimoDaoImpl implements EmprestimoDao {
             return new EmprestimoDaoImpl();
         }
         return instance;
+    }
+
+    @Override
+    public Set<Emprestimo> getAll(){
+        return conjunto;
+    }
+
+    @Override
+    public boolean inserirEmprestimo(Emprestimo emprestimo) {
+        return conjunto.add(emprestimo);
     }
 
     @Override

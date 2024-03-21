@@ -1,42 +1,38 @@
 package view.sistema;
 
-import dto.UsuarioDTO;
-
 import java.util.Scanner;
 
 public class SistemaView {
 
     private final static Scanner input = new Scanner(System.in);
 
-    public static MenuOption menu(){
+    public static MenuOption menuSistema(){
         System.out.println("----------BIBLIOTECA IFSP----------");
-        System.out.println("1. Cadastrar Usuário");
-        System.out.println("2. Listar usuário com empréstimo");
-        System.out.println("3. Listar usuário com penalidade");
-        System.out.println("4. Cadastrar livro");
-        System.out.println("5. Listar livros");
-        System.out.println("6. Listar livros emprestados");
-        System.out.println("7. Listar empréstimos atrasados");
+        System.out.println("1. Menu de usuário");
+        System.out.println("2. Menu de empréstimo");
+        System.out.println("3. Menu de livro");
         System.out.println("0. Sair");
-        System.out.println("Digite a opção desejada: ");
+        System.out.print("Digite a opção desejada: ");
 
         return switch (input.nextInt()) {
-            case 1-> MenuOption.CADASTRAR_USUARIO;
-            case 2-> MenuOption.LISTAR_USUARIO_COM_EMPRESTIMO;
-            case 3-> MenuOption.LISTAR_USUARIO_COM_PENALIDADE;
-            case 4-> MenuOption.CADASTRAR_LIVRO;
-            case 5-> MenuOption.LISTAR_LIVROS;
-            case 6-> MenuOption.LISTAR_LIVROS_EMPRESTADOS;
-            case 7-> MenuOption.LISTAR_EMPRESTIMOS_ATRASADOS;
+            case 1-> MenuOption.MENU_USUARIO;
+            case 2-> MenuOption.MENU_EMPRESTIMO;
+            case 3-> MenuOption.MENU_LIVRO; 
             default -> MenuOption.SAIR;
         };
     }
 
-    public static void mensagemDeErro(String str) {
+    public static void mensagem(String str) {
         System.out.println(str);
     }
 
-    public static UsuarioDTO teste(){
-        return new UsuarioDTO("henrique", "henrique@gmail.com", "1234324", "Funcionario");
+    public static String menu(String[] opcoes){
+        System.out.println("----------BIBLIOTECA IFSP----------");
+        for (int i = 0; i < opcoes.length; i++) {
+            System.out.println((i+1) + ". " + opcoes[i]);
+        }
+        System.out.println("0. Voltar");
+        System.out.println("Digite a opção desejada: ");
+        return input.nextLine();
     }
 }
