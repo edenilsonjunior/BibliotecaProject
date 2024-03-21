@@ -13,15 +13,17 @@ public class LivroView implements ILivroView{
     public LivroDTO cadastrarLivro() {
         System.out.println("-----CADASTRO DE LIVROS-----");
         System.out.println("----------------------------");
+
+
         System.out.print("Informe o titulo do livro: ");
-        var titulo = input.nextLine();
-        System.out.println();
+        String titulo = input.nextLine();
+
         System.out.print("Informe o autor do livro: ");
-        var autor = input.nextLine();
-        System.out.println();
+        String autor = input.nextLine();
+
         System.out.print("Informe a edicao do livro: ");
-        var edicao = input.nextLine();
-        System.out.println();
+        String edicao = input.nextLine();
+
         return new LivroDTO(titulo,autor,edicao,true);
     }
 

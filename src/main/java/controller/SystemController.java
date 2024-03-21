@@ -10,10 +10,13 @@ public class SystemController {
 
     public void run(){
 
-       MenuOption escolha;
+        
+        MenuOption escolha;
+        
+        do {
+            SistemaView.limparTela();
 
-       do {
-           escolha = SistemaView.menuSistema();
+            escolha = SistemaView.menuSistema();
 
            switch (escolha){
                 case MENU_USUARIO:

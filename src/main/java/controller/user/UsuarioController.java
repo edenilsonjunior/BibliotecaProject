@@ -23,8 +23,7 @@ public class UsuarioController {
 
         opcoes = new String[]{
             "Cadastrar usuario",
-            "Listar usuarios com penalidade",
-            "Voltar"
+            "Listar usuarios com penalidade"
         };
     }
 
@@ -33,6 +32,7 @@ public class UsuarioController {
         String escolha;
 
         do {
+            SistemaView.limparTela();
             escolha = SistemaView.menu(opcoes);
 
             switch (escolha) {

@@ -14,18 +14,18 @@ public class UsuarioView implements IUsuarioView{
 
         System.out.println("-----CADASTRO DE USUARIO-----");
         System.out.println("-----------------------------");
+
         System.out.print("Informe seu nome: ");
-        var nome = input.nextLine();
-        System.out.println();
+        String nome = input.nextLine();
+
         System.out.print("Informe seu email: ");
-        var email = input.nextLine();
-        System.out.println();
+        String email = input.nextLine();
+
         System.out.print("Informe seu telefone: ");
-        var telefone = input.nextLine();
-        System.out.println();
+        String telefone = input.nextLine();
+
         System.out.print("Informe seu cargo: ");
-        var cargo = input.nextLine();
-        System.out.println();
+        String cargo = input.nextLine();
 
         return new UsuarioDTO(nome,email,telefone,cargo);
     }

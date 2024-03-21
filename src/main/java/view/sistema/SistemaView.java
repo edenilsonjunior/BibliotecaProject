@@ -13,8 +13,11 @@ public class SistemaView {
         System.out.println("3. Menu de livro");
         System.out.println("0. Sair");
         System.out.print("Digite a opção desejada: ");
+        
+        int escolha = input.nextInt();
+        input.nextLine();
 
-        return switch (input.nextInt()) {
+        return switch (escolha) {
             case 1-> MenuOption.MENU_USUARIO;
             case 2-> MenuOption.MENU_EMPRESTIMO;
             case 3-> MenuOption.MENU_LIVRO; 
@@ -32,7 +35,16 @@ public class SistemaView {
             System.out.println((i+1) + ". " + opcoes[i]);
         }
         System.out.println("0. Voltar");
-        System.out.println("Digite a opção desejada: ");
-        return input.nextLine();
+        System.out.print("Digite a opção desejada: ");
+        
+        int escolha = input.nextInt();
+
+        return escolha == 0 ? "Voltar" : opcoes[escolha-1];
+    }
+
+    public static void limparTela(){
+    // Limpa a tela
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
     }
 }

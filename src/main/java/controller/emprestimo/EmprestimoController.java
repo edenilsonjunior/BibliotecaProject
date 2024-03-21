@@ -41,8 +41,7 @@ public class EmprestimoController {
             "Adicionar emprestimo",
             "Livros emprestados",
             "Emprestimos atrasados",
-            "Usuarios com livros emprestados",
-            "Voltar"
+            "Usuarios com livros emprestados"
         };    
     }
 
@@ -51,6 +50,7 @@ public class EmprestimoController {
         String escolha;
 
         do {
+            // SistemaView.limparTela();
             escolha = SistemaView.menu(opcoes);
 
             switch (escolha) {
@@ -70,10 +70,6 @@ public class EmprestimoController {
                 case "Usuarios com livros emprestados":
                     listarUsuariosComLivrosEmprestados();
                     break;
-
-                case "Voltar":
-                    break;
-
                 default:
                     SistemaView.mensagem("Opção inválida");
                     break;
@@ -88,7 +84,8 @@ public class EmprestimoController {
 
         String[] dadosEmprestimo = emprestimoView.adicionarEmprestimo();
 
-        // [0] == nome livro / [1] == nome usuario
+        System.out.printf("array[0] = '%s', array[1] = '%s'\n", dadosEmprestimo[0], dadosEmprestimo[1]);
+
 
         Livro livro = livros.getByTitulo(dadosEmprestimo[0]);
 

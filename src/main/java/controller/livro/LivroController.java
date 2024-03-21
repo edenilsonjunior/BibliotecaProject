@@ -34,8 +34,7 @@ public class LivroController {
         opcoes = new String[]{
             "Cadastrar livro",
             "Listar todos os livros",
-            "Listar quantidade de vezes que cada livro foi emprestado",
-            "Voltar"
+            "Listar quantidade de vezes que cada livro foi emprestado"
         };
     }
 
@@ -44,6 +43,7 @@ public class LivroController {
             String escolha;
     
             do {
+                SistemaView.limparTela();
                 escolha = SistemaView.menu(opcoes);
     
                 switch (escolha) {
