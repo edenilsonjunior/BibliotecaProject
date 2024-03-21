@@ -1,5 +1,6 @@
 package controller.user;
 
+import dto.UsuarioDTO;
 import model.dao.user.UsuarioDao;
 import model.dao.user.UsuarioDaoImpl;
 import model.entity.user.Usuario;
@@ -23,27 +24,20 @@ public class UsuarioController {
         return usuarioDao.inserirUsuario(usuario);
     }
 
-    public List<String> listarPenalidades() {
+    public boolean listarUsuariosComPenalidade() {
 
-        List<String> penalidades = new ArrayList<>(usuarioDao.getAll().size());
+        List<UsuarioDTO> usuariosDTO = new ArrayList<>();
 
-        StringBuilder sb = new StringBuilder();
-
-        int i = 0;
-
-        for (var user : usuarioDao.getAll()) {
-
-            for (var emprestimo : user.getEmprestimos()) {
-                if (emprestimo.isAtrasado()) {
-                    String str = user.getNome();
-                    penalidades.add(str);
-                    break;
-                }
-            }
+        for (Usuario u : usuarioDao.listarUsuariosComPenalidade()) {
+            usuariosDTO.add(new UsuarioDTO(u));
         }
 
-        if (penalidades.isEmpty()) return null;
-
-        return penalidades;
+        if (usuariosDTO.isEmpty()) {
+            return false;
+        }
+        else {
+            usuarioView.listarUsuariosComPenalidade(usuariosDTO);
+            return true;
+        }
     }
 }

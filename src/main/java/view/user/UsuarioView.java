@@ -32,12 +32,12 @@ public class UsuarioView implements IUsuarioView{
     }
 
     @Override
-    public void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade); {
+    public void listarUsuariosComPenalidade(List<UsuarioDTO> usuariosComPenalidade) {
 
         System.out.println("-----USUARIO(S) COM PENALIDADE-----");
         System.out.println("-----------------------------------");
 
-        for (Usuario u : usuariosComPenalidade) {
+        for (UsuarioDTO u : usuariosComPenalidade) {
             System.out.println(u.getNome());
         }
     }

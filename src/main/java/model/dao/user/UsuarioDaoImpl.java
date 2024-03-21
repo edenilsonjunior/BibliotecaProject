@@ -29,7 +29,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public boolean inserirUsuario(Usuario usuario) {
-        return usuarios.add(usuario)
+        return usuarios.add(usuario);
     }
 
     @Override
@@ -38,18 +38,24 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    Set<Usuario> listarUsuariosComPenalidade() {
+    public Set<Usuario> listarUsuariosComPenalidade() {
 
         Set<Usuario> usuariosComPenalidade =  new HashSet<>();
 
+        // teste
+        Usuario uTeste = new Usuario("edcu","edcu@gmail.com", "190", "dev low code");
+
         for (Usuario u : usuarios) {
-            for (var emprestimo : u.getEmprestismos()) {
+            for (var emprestimo : u.getEmprestimos()) {
                 if (emprestimo.isAtrasado()) {
                     usuariosComPenalidade.add(u);
                     break;
                 }
             }
         }
+
+        // teste
+        usuariosComPenalidade.add(uTeste);
 
         return usuariosComPenalidade;
     }
