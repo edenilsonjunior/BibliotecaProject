@@ -46,6 +46,7 @@ public class UsuarioViewPane implements IUsuarioView {
 
     @Override
     public void listarPenalidades(List<UsuarioDTO> usuariosComPenalidade) {
+
         StringBuilder sb = new StringBuilder();
         sb.append("Usuarios com penalidade:\n");
         usuariosComPenalidade.forEach(usuario -> sb.append(usuario.toString()).append("\n"));
