@@ -10,15 +10,18 @@ import model.entity.user.Usuario;
 import view.sistema.SistemaView;
 import view.user.IUsuarioView;
 import view.user.UsuarioView;
+import view.user.UsuarioViewPane;
 
 public class UsuarioController {
 
     private IUsuarioView usuarioView;
+    private IUsuarioView usuarioViewPane;
     private UsuarioDao usuarioDao;
     private String[] opcoes;
 
     public UsuarioController() {
         this.usuarioView = new UsuarioView();
+        this.usuarioViewPane = new UsuarioViewPane();
         this.usuarioDao = UsuarioDaoImpl.getInstance();
 
         opcoes = new String[]{
@@ -48,7 +51,7 @@ public class UsuarioController {
     }
 
     public boolean cadastrarUsuario() {
-        Usuario usuario = usuarioView.cadastrarUsuario().toEntity();
+        Usuario usuario = usuarioViewPane.cadastrarUsuario().toEntity();
         return usuarioDao.inserirUsuario(usuario);
     }
 

@@ -27,7 +27,7 @@ public class UsuarioView implements IUsuarioView{
         System.out.print("Informe seu cargo: ");
         String cargo = input.nextLine();
 
-        return new UsuarioDTO(nome,email,telefone,cargo);
+        return new UsuarioDTO(nome, email, telefone, cargo);
     }
 
     @Override

@@ -86,7 +86,6 @@ public class EmprestimoController {
 
         System.out.printf("array[0] = '%s', array[1] = '%s'\n", dadosEmprestimo[0], dadosEmprestimo[1]);
 
-
         Livro livro = livros.getByTitulo(dadosEmprestimo[0]);
 
         Usuario usuario = usuarios.getByName(dadosEmprestimo[1]);
