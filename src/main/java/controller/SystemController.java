@@ -20,12 +20,15 @@ public class SystemController {
 
            switch (escolha){
                 case MENU_USUARIO:
+                    SistemaView.limparTela();
                     new UsuarioController().run();
                      break;
                 case MENU_EMPRESTIMO:
+                    SistemaView.limparTela();    
                     new EmprestimoController().run();    
                     break;
                 case MENU_LIVRO:
+                    SistemaView.limparTela();    
                     new LivroController().run();
                     break;
                default:

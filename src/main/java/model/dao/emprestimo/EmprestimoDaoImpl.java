@@ -18,7 +18,7 @@ public class EmprestimoDaoImpl implements EmprestimoDao {
     public static EmprestimoDaoImpl getInstance(){
 
         if(instance == null){
-            return new EmprestimoDaoImpl();
+            instance = new EmprestimoDaoImpl();
         }
         return instance;
     }

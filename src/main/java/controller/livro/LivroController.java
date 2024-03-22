@@ -43,7 +43,7 @@ public class LivroController {
             String escolha;
     
             do {
-                SistemaView.limparTela();
+                // SistemaView.limparTela();
                 escolha = SistemaView.menu(opcoes);
     
                 switch (escolha) {

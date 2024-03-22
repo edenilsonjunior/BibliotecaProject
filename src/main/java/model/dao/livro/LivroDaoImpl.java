@@ -16,7 +16,7 @@ public class LivroDaoImpl implements LivroDao{
 
     public static LivroDaoImpl getInstance(){
         if (instance == null){
-            return new LivroDaoImpl();
+            instance = new LivroDaoImpl();
         }
         return instance;
     }
@@ -28,7 +28,7 @@ public class LivroDaoImpl implements LivroDao{
 
     @Override
     public Livro getByTitulo(String titulo){
-        return livros.get(titulo);
+        return livros.getOrDefault(titulo, new Livro("titulo", "titulo", "titulo", false));
     }
 
     @Override

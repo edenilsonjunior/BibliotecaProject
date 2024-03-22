@@ -80,4 +80,10 @@ public class Livro {
         return (this.getTitulo().equals(livro.getTitulo()) &&
                 this.getEdicao().equals(livro.getEdicao()));
     }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Livro [titulo:" + titulo + ", autor:" + autor + ", edicao:" + edicao + "]";
+    }
 }

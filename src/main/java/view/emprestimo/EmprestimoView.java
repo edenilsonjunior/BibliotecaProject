@@ -16,7 +16,7 @@ public class EmprestimoView implements IEmprestimoView{
         System.out.print("Digite o nome da pessoa: ");
         String nomePessoa = scanner.nextLine();
 
-        scanner.close();
+        // scanner.close();
 
         return new String[]{nomeLivro, nomePessoa};
     }

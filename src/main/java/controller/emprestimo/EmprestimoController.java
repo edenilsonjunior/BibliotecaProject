@@ -84,12 +84,8 @@ public class EmprestimoController {
 
         String[] dadosEmprestimo = emprestimoView.adicionarEmprestimo();
 
-        System.out.printf("array[0] = '%s', array[1] = '%s'\n", dadosEmprestimo[0], dadosEmprestimo[1]);
-
-
-        Livro livro = livros.getByTitulo(dadosEmprestimo[0]);
-
         Usuario usuario = usuarios.getByName(dadosEmprestimo[1]);
+        Livro livro = livros.getByTitulo(dadosEmprestimo[0]);
 
         if (livro != null && usuario != null) {
 
@@ -143,12 +139,16 @@ public class EmprestimoController {
     private void listarUsuariosComLivrosEmprestados() {
         Set<Usuario> usuariosComEmprestimos = usuarios.listarUsuariosComLivrosEmprestados();
 
+        List<String> usuarios = new ArrayList<>();
+
+        for (Usuario u : usuariosComEmprestimos) {
+            usuarios.add(u.getNome());
+        }
+        
         if (usuariosComEmprestimos != null) {
-            List<String> usuarios = new ArrayList<>();
-            for (Usuario u : usuariosComEmprestimos) {
-                usuarios.add(u.getNome());
-            }
-            emprestimoView.listarUsuariosComEmprestimos(usuarios);
+            // emprestimoView.listarUsuariosComEmprestimos(usuarios);
+
+            usuarios.forEach(a -> System.out.println(a));
         } 
         else {
             SistemaView.mensagem("Nenhum usuário com livros emprestados");
